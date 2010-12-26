@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<script type="text/javascript">
+
+    function postComment(id) {
+
+        var comment = $('#comment' + id).val();
+
+        $.post('/comment/', {
+            id: id,
+            text: comment
+        }, function () {
+            $('#comments' + id).load ('/comments/?id=' + id);
+        });
+
+    }
+
+</script>
+        <h1>
+{% if page_index > 1 %}
+    <a href="/p{{ page_index-1 }}">backward</a>
+{% endif %}
+{% if page_index < pages_total %}
+    <a href="/p{{ page_index+1 }}">forward</a>
+{% endif %}
+            </h1>
+{% for post in posts %}
+  <div class="post">
+      <h2 class="title"><a href="#">Lorem ipsum sed aliquam</a></h2>
+      <p class="meta">
+      Posted by
+          {% if post.user_name %}
+          {{ post.user_name }}
+          {% endif %}
+          {% if not post.user_name %}
+          Anonymous
+          {% endif %}
+          on {{post.date|datetimeformat()}}
+      </p>
+
+      <div class="entry">
+          {{ post.text }}<br><br>
+          <div id="comments{{post.id}}">
+          <strong>Comments</strong><br>
+          <ul>
+              {% for comment in post.comments %}
+              <li>
+                  {{ comment.text }}
+                  <em>
+                  on {{ comment.date|datetimeformat()}}
+                  </em>
+
+              </li>
+              {% endfor %}
+
+          </ul>
+          </div>
+          <label for="comment{{ post.id }}">Comment:</label><br>
+          <input type="text" id="comment{{ post.id }}">
+          <input type="button" value="Post" onclick="postComment('{{ post.id }}')">
+      </div>
+  </div>
+{% endfor %}
+
+{% endblock %}

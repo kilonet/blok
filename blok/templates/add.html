@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<form action="/add/" method="post">
+    <label for="name">Name:</label><br/>
+    <input type="text" name="name" id="name" value="Anonymous"><br/>
+
+    <label for="title">Title:</label><br/>
+    <input type="text" name="name" id="title" value="Lorem ipsum sed aliquam"><br/>
+
+    <label for="message">Message:</label><br/>
+    <textarea rows="5" cols="60" name="message" id="message">
+        Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum vel, tempor at, varius non, purus. Mauris vitae nisl nec metus placerat consectetuer. Donec ipsum. Proin imperdiet est. Phasellus dapibus semper urna. Pellentesque ornare, consectetuer nisl felis ac diam. Mauris aliquet. Aliquam sem leo, vulputate sed, convallis at, ultricies quis, justo. Donec nonummy magna quis risus. Quisque eleifend. Phasellus tempor vehicula justo. Aliquam lacia metus ut elit. Suspendisse iaculis mauris nec lorem.         
+    </textarea><br>
+
+    <input type="submit" value="Post">
+</form>
+
+{% endblock %}

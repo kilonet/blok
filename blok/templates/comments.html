@@ -1,0 +1,9 @@
+<strong>Comments</strong><br>
+<ul>
+    {% for comment in comments %}
+        <li>
+            {{ comment.text }}
+            <em>on {{ comment.date|datetimeformat()}}</em>
+        </li>
+    {% endfor %}
+</ul>
