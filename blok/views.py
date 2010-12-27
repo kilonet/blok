@@ -44,6 +44,7 @@ def add (request):
         post = Post (
                 text=request.form.get ('message'),
                 user_name=request.form.get ('name'),
+                title=request.form.get ('title'),
                 date = datetime.now())
         post.save ()
     return redirect ("/")

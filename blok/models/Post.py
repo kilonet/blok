@@ -7,6 +7,7 @@ __author__ = 'kilonet'
 
 class Post(Document):
     text = StringField()
+    title = StringField()
     user_name = StringField ()
     date = DateTimeField (default=datetime.now())
     comments = ListField(EmbeddedDocumentField(Comment))
